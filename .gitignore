@@ -1,0 +1,10 @@
+# Ignore everything
+*
+# But these files
+!.gitignore
+!Makefile
+!Pipfile
+!Pipfile.lock
+!requirements.txt
+# And these directories
+!comparesort/
