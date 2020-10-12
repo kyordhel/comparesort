@@ -9,4 +9,5 @@
 # ## ###############################################################
 
 from .benchmark import benchmark
-from .plotter import plot
+from .plotter import plot_access
+from .plotter import plot_time

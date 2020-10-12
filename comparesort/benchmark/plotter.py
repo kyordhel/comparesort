@@ -47,7 +47,7 @@ def _plot_series(axis, xdata, ydata, color, label):
 	axis.plot(xdata, ydata, "{}".format(color))
 # end def
 
-def plot():
+def plot_access():
 	"""Plots the data of the datafile"""
 	data = _read_data()
 	colors = ["ro", "go", "bo", "ys", "cX", "mX", "kx"]
@@ -60,6 +60,31 @@ def plot():
 			ax,
 			data[sortingmethod]["x"],
 			data[sortingmethod]["y"],
+			colors[i%len(colors)],
+			sortingmethod[0].upper() + sortingmethod[1:].replace("sort", " Sort")
+		)
+		i+=1
+	# end for
+	ax.grid()
+	plt.xlabel("Array size")
+	plt.ylabel("Array IO operations (read/write)")
+	plt.legend()
+	plt.show()
+# end def
+
+def plot_time():
+	"""Plots the data of the datafile"""
+	data = _read_data()
+	colors = ["ro", "go", "bo", "ys", "cX", "mX", "kx"]
+
+	f, ax = plt.subplots(1)
+
+	i = 0
+	for sortingmethod in data:
+		_plot_series(
+			ax,
+			data[sortingmethod]["x"],
+			data[sortingmethod]["t"],
 			colors[i%len(colors)],
 			sortingmethod[0].upper() + sortingmethod[1:].replace("sort", " Sort")
 		)

@@ -51,10 +51,14 @@ def benchmark(sorting_functions, max_array_size, initial_array_size=100, step=10
 def benchmark_f(sorting_function, array):
 	"""Benchmarks a sorting function over an array"""
 	start_time = time.time()
-	for i in range(10):
-		array.reset()
-		sorting_function(array)
-	run_time = (time.time() - start_time) * 100000
+	run_time = 0
+	try:
+		for i in range(10):
+			array.reset()
+			sorting_function(array)
+		run_time = (time.time() - start_time) * 100000
+	except RecursionError:
+		run_time = 0
 	print_summary(sorting_function.__name__, array, run_time)
 	return array.accesses, run_time
 #end def
