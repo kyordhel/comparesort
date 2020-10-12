@@ -3,6 +3,7 @@
 # But these files
 !.gitignore
 !Makefile
+!LICENSE
 !Pipfile
 !Pipfile.lock
 !requirements.txt
